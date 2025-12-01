@@ -1,0 +1,358 @@
+/* Matches.css */
+
+.matches {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.matches-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.matches-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.matches-header .btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.preferences-panel {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.preferences-panel h3 {
+  margin-bottom: 1rem;
+}
+
+.prefs-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.range-inputs input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.match-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.match-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.match-rank {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.match-avatar {
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.match-info {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.match-info h3 {
+  margin-bottom: 0.25rem;
+}
+
+.match-age {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.match-scores {
+  margin-bottom: 1rem;
+}
+
+.score-item {
+  margin-bottom: 0.5rem;
+}
+
+.score-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.score-bar-small {
+  height: 6px;
+  background-color: var(--surface-light);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.25rem;
+}
+
+.score-bar-small .score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.score-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.match-traits-preview {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.trait-mini {
+  background-color: var(--surface-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.no-matches {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--surface);
+  border-radius: 12px;
+  grid-column: 1 / -1;
+}
+
+/* Match Detail Modal */
+.match-detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--surface);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.modal-close:hover {
+  background-color: var(--surface-light);
+}
+
+.match-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.match-avatar-large {
+  font-size: 5rem;
+}
+
+.compatibility-breakdown {
+  margin-bottom: 2rem;
+}
+
+.compatibility-breakdown h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.score-breakdown {
+  margin-top: 1rem;
+}
+
+.breakdown-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.breakdown-item span:first-child {
+  min-width: 120px;
+  font-size: 0.9rem;
+}
+
+.breakdown-bar {
+  flex: 1;
+  height: 8px;
+  background-color: var(--surface-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.breakdown-bar div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.breakdown-item span:last-child {
+  min-width: 50px;
+  text-align: right;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.personality-comparison {
+  background-color: var(--surface-light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.similarities,
+.differences {
+  margin-top: 1rem;
+}
+
+.similarities h4 {
+  color: var(--success);
+  margin-bottom: 0.5rem;
+}
+
+.differences h4 {
+  color: var(--warning);
+  margin-bottom: 0.5rem;
+}
+
+.trait-comparison-table {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.trait-comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trait-comparison-table th,
+.trait-comparison-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.trait-comparison-table th {
+  background-color: var(--surface-light);
+  font-weight: 600;
+}
+
+.match-disclaimer {
+  background-color: var(--surface-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.match-disclaimer p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.matches-footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .matches-header .btn {
+    position: static;
+    margin-top: 1rem;
+  }
+
+  .matches-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .match-detail-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .breakdown-item {
+    flex-wrap: wrap;
+  }
+
+  .trait-comparison-table {
+    font-size: 0.85rem;
+  }
+}
