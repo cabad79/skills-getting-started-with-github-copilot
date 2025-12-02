@@ -1,42 +1,213 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/**
+ * App-specific styles
+ * Component layouts and sections
+ */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =============================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-hero);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
   text-align: center;
+  padding: var(--space-8) 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.hero-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--space-6);
+  line-height: 1.1;
+  color: var(--color-white);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-8);
+  opacity: 0.95;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 70vh;
   }
-  to {
-    transform: rotate(360deg);
+
+  .hero-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
   }
 }
 
+/* =============================================================================
+   SECTIONS
+   ========================================================================== */
+
+section {
+  padding: var(--space-16) 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: var(--space-12) 0;
+  }
+}
+
+.features-section {
+  background: var(--color-bg-secondary);
+}
+
+.demo-section {
+  background: var(--color-bg-primary);
+}
+
+.showcase-section {
+  background: var(--color-bg-secondary);
+}
+
+.showcase-group {
+  margin-bottom: var(--space-12);
+}
+
+.showcase-group:last-child {
+  margin-bottom: 0;
+}
+
+/* =============================================================================
+   FEATURE CARDS
+   ========================================================================== */
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+}
+
+/* =============================================================================
+   FOOTER
+   ========================================================================== */
+
+.footer {
+  margin-top: auto;
+  padding: var(--space-8) 0;
+  background: var(--color-gray-900);
+  color: var(--color-white);
+}
+
+.footer p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* =============================================================================
+   INPUT GROUP
+   ========================================================================== */
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* =============================================================================
+   RESPONSIVE UTILITIES
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .flex-wrap {
+    justify-content: center;
+  }
+}
+
+/* =============================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ========================================================================== */
+
+/* Use contain for performance */
+.card,
+.hero,
+section {
+  contain: layout style paint;
+}
+
+/* Optimize animations on scroll */
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .animate-fade-in,
+  .animate-slide-in-left,
+  .animate-slide-in-right {
+    will-change: opacity, transform;
   }
 }
 
-.card {
-  padding: 2em;
-}
+/* =============================================================================
+   DARK MODE ADJUSTMENTS
+   ========================================================================== */
 
-.read-the-docs {
-  color: #888;
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+
+  .hero::before {
+    background: radial-gradient(
+      circle at 20% 50%,
+      rgba(255, 107, 157, 0.1) 0%,
+      transparent 50%
+    );
+  }
+
+  .features-section,
+  .showcase-section {
+    background: var(--color-bg-secondary);
+  }
+
+  .footer {
+    background: var(--color-bg-dark);
+  }
 }
