@@ -5,11 +5,14 @@ require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 /**
  * Database Configuration
  * Supports both PostgreSQL (production/high-scale) and SQLite (cost-optimized)
+ * With optional Turso-inspired distributed replication
  */
 
 const DB_TYPE = process.env.DB_TYPE || 'sqlite'; // 'postgres' or 'sqlite'
+const TURSO_ENABLED = process.env.TURSO_REPLICA_ENABLED === 'true';
 
 let sequelize;
+let replicationService = null;
 
 if (DB_TYPE === 'sqlite') {
   // SQLite Configuration (Cost-Optimized: $0/month)
@@ -75,4 +78,22 @@ if (DB_TYPE === 'sqlite') {
   console.log('🐘 Using PostgreSQL database (High-Scale Mode)');
 }
 
+// Initialize Turso replication if enabled
+if (TURSO_ENABLED && DB_TYPE === 'sqlite') {
+  const { getInstance } = require('../services/tursoReplicationService');
+  replicationService = getInstance();
+
+  // Initialize replication service asynchronously
+  const dbPath = process.env.SQLITE_PATH || path.join(__dirname, '../../data/personalitymatch.db');
+
+  replicationService.initialize(dbPath)
+    .then(() => {
+      console.log('✅ Turso replication initialized');
+    })
+    .catch(error => {
+      console.error('❌ Failed to initialize Turso replication:', error);
+    });
+}
+
 module.exports = sequelize;
+module.exports.replicationService = replicationService;
